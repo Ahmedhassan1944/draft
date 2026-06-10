@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     initScrollReveal();
     initStoryAnimations();
+    initStepNavigation();
 });
 
 /* --- SCROLL PROGRESS --- */
@@ -23,7 +24,7 @@ function initScrollProgress() {
 /* --- SCROLL REVEAL (Intersection Observer) --- */
 function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -52,7 +53,7 @@ function initStoryAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.id;
-                
+
                 if (id === 'step-1-pain' && !step1Triggered) {
                     step1Triggered = true;
                     runPainAnimation();
@@ -84,13 +85,13 @@ function runPainAnimation() {
     const idEl = document.querySelector('.typing-id');
     const counterEl = document.getElementById('pain-counter-val');
     let count = 400;
-    
+
     setInterval(() => {
         const randomId = Math.floor(10000 + Math.random() * 90000);
         idEl.textContent = randomId;
-        
+
         count--;
-        if(count < 0) count = 400;
+        if (count < 0) count = 400;
         counterEl.textContent = count;
     }, 1500); // Slow, painful loop
 }
@@ -107,22 +108,22 @@ function runTranslationTyping() {
         "I press print to generate the PDF form.",
         "I repeat this process 400 times every month."
     ];
-    
+
     let lineIdx = 0;
-    
+
     function typeLine() {
         if (lineIdx >= lines.length) {
             // Done typing, add pulsing cursor
             container.innerHTML += '<span class="typing-cursor"></span>';
             return;
         }
-        
+
         const line = lines[lineIdx];
         const lineEl = document.createElement('div');
         container.appendChild(lineEl);
-        
+
         let charIdx = 0;
-        
+
         const typeChar = setInterval(() => {
             if (charIdx >= line.length) {
                 clearInterval(typeChar);
@@ -134,7 +135,7 @@ function runTranslationTyping() {
             }
         }, 30); // Typing speed
     }
-    
+
     typeLine();
 }
 
@@ -265,12 +266,12 @@ ErrorHandler:
     container.innerHTML = vbaCode;
     const content = container.innerHTML;
     container.innerHTML = '';
-    
+
     let i = 0;
     // We will just type text, but for syntax highlighting we'd need a more complex parser.
     // For this demo, we'll slice the HTML string directly and rely on browser fixing open tags,
     // or better, just reveal it chunk by chunk rapidly.
-    
+
     const chunkTyping = setInterval(() => {
         if (i >= content.length) {
             clearInterval(chunkTyping);
@@ -289,26 +290,26 @@ function runExecutionAnimation() {
     const percEl = document.getElementById('forms-percentage');
     const barEl = document.getElementById('execution-progress');
     const logsEl = document.getElementById('execution-logs');
-    
+
     let processed = 0;
     const total = 400;
-    
+
     const executionInterval = setInterval(() => {
         if (processed >= total) {
             clearInterval(executionInterval);
             logsEl.innerHTML += `<div class="log-line text-gold">>>> AUTOMATION COMPLETE. TIME ELAPSED: 2.1s</div>`;
             return;
         }
-        
+
         processed += Math.floor(Math.random() * 5) + 1; // Process 1-5 at a time
         if (processed > total) processed = total;
-        
+
         const percentage = Math.floor((processed / total) * 100);
-        
+
         countEl.textContent = processed;
         percEl.textContent = percentage + '%';
         barEl.style.width = percentage + '%';
-        
+
         // Add log
         const id = Math.floor(10000 + Math.random() * 90000);
         const ms = Math.floor(Math.random() * 10) + 1;
@@ -316,12 +317,12 @@ function runExecutionAnimation() {
         log.className = 'log-line';
         log.textContent = `[SUCCESS] Processed ID ${id} -> PDF Exported (${ms}ms)`;
         logsEl.appendChild(log);
-        
+
         // Auto scroll logs
         if (logsEl.children.length > 6) {
             logsEl.removeChild(logsEl.firstChild);
         }
-        
+
     }, 50); // Very fast execution
 }
 
@@ -329,13 +330,13 @@ function runExecutionAnimation() {
 function runROIAnimation() {
     const counters = document.querySelectorAll('.count-up');
     const duration = 2000; // 2 seconds
-    
+
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
         const increment = target / (duration / 16); // 60fps
-        
+
         let current = 0;
-        
+
         const updateCounter = () => {
             current += increment;
             if (current < target) {
@@ -345,7 +346,7 @@ function runROIAnimation() {
                 counter.innerText = target.toLocaleString();
             }
         };
-        
+
         updateCounter();
     });
 }
@@ -354,20 +355,20 @@ function runROIAnimation() {
 function initParticles() {
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    
+
     let width, height;
     let particles = [];
-    
+
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
     }
-    
+
     window.addEventListener('resize', resize);
     resize();
-    
+
     class Particle {
         constructor() {
             this.x = Math.random() * width;
@@ -376,23 +377,23 @@ function initParticles() {
             this.speedX = (Math.random() - 0.5) * 0.5;
             this.speedY = (Math.random() - 0.5) * 0.5;
             this.opacity = Math.random() * 0.5 + 0.1;
-            
+
             // Random color from palette
             const colors = ['#3b82f6', '#8b5cf6', '#10b981'];
             this.color = colors[Math.floor(Math.random() * colors.length)];
         }
-        
+
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-            
+
             // Wrap around
             if (this.x > width) this.x = 0;
             if (this.x < 0) this.x = width;
             if (this.y > height) this.y = 0;
             if (this.y < 0) this.y = height;
         }
-        
+
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -401,7 +402,7 @@ function initParticles() {
             ctx.fill();
         }
     }
-    
+
     function createParticles() {
         // Adjust amount based on screen size for performance
         const amount = Math.floor((width * height) / 15000);
@@ -409,26 +410,26 @@ function initParticles() {
             particles.push(new Particle());
         }
     }
-    
+
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        
+
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
         }
-        
+
         // Connecting lines for AI vibe
         ctx.globalAlpha = 0.05;
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 0.5;
-        
+
         for (let i = 0; i < particles.length; i++) {
             for (let j = i; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < 100) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -437,10 +438,159 @@ function initParticles() {
                 }
             }
         }
-        
+
         requestAnimationFrame(animate);
     }
-    
+
     createParticles();
     animate();
+}
+
+/* =============================================
+   STEP NAVIGATION CONTROLLER
+   ============================================= */
+function initStepNavigation() {
+    // ── Registry: all navigable sections in DOM order ──
+    const SECTION_IDS = [
+        'hero',
+        'step-1-pain',
+        'step-2-translation',
+        'step-3-analysis',
+        'step-4-5-generation',
+        'special-architecture',
+        'step-6-execution',
+        'step-7-roi'
+    ];
+
+    const sections = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean);
+    const pips = document.querySelectorAll('.step-pip');
+    const btnUp = document.getElementById('nav-up');
+    const btnDown = document.getElementById('nav-down');
+    const track = document.getElementById('step-progress-track');
+
+    // Inject animated progress line element
+    const progressLine = document.createElement('div');
+    progressLine.className = 'progress-line';
+    track.appendChild(progressLine);
+
+    let currentIndex = 0;
+
+    // ── Helper: scroll smoothly to a section ──
+    function scrollToSection(index) {
+        if (index < 0 || index >= sections.length) return;
+        sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ── Helper: update UI state for a given active index ──
+    function setActiveIndex(index) {
+        currentIndex = index;
+
+        // Update pips
+        pips.forEach((pip, i) => {
+            pip.classList.remove('active', 'visited');
+            if (i === index) pip.classList.add('active');
+            else if (i < index) pip.classList.add('visited');
+        });
+
+        // Update progress line (fills from first pip to active pip)
+        updateProgressLine(index);
+
+        // Arrow button states
+        btnUp.disabled = index === 0;
+        btnDown.disabled = index === sections.length - 1;
+    }
+
+    // ── Progress line fill calculation ──
+    function updateProgressLine(index) {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        if (index <= 0) {
+            if (isMobile) progressLine.style.width = '0';
+            else progressLine.style.height = '0';
+            return;
+        }
+
+        // Measure pip positions relative to track
+        const trackRect = track.getBoundingClientRect();
+        const fromPip = pips[0].getBoundingClientRect();
+        const toPip = pips[index].getBoundingClientRect();
+
+        if (isMobile) {
+            const start = fromPip.left + fromPip.width / 2 - trackRect.left;
+            const end = toPip.left + toPip.width / 2 - trackRect.left;
+            progressLine.style.left = start + 'px';
+            progressLine.style.width = (end - start) + 'px';
+        } else {
+            const start = fromPip.top + fromPip.height / 2 - trackRect.top;
+            const end = toPip.top + toPip.height / 2 - trackRect.top;
+            progressLine.style.top = start + 'px';
+            progressLine.style.height = (end - start) + 'px';
+        }
+    }
+
+    // ── Intersection Observer: detect which section is most visible ──
+    const visibilityMap = new Map();
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            visibilityMap.set(entry.target.id, entry.intersectionRatio);
+        });
+
+        // Find the section with the highest intersection ratio
+        let bestId = null;
+        let bestRatio = 0;
+        visibilityMap.forEach((ratio, id) => {
+            if (ratio > bestRatio) { bestRatio = ratio; bestId = id; }
+        });
+
+        if (bestId) {
+            const idx = SECTION_IDS.indexOf(bestId);
+            if (idx !== -1 && idx !== currentIndex) {
+                setActiveIndex(idx);
+            }
+        }
+    }, {
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0]
+    });
+
+    sections.forEach(sec => navObserver.observe(sec));
+
+    // ── Button clicks ──
+    function addRipple(btn, e) {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(btn.offsetWidth, btn.offsetHeight);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = e.clientX - btn.getBoundingClientRect().left - size / 2 + 'px';
+        ripple.style.top = e.clientY - btn.getBoundingClientRect().top - size / 2 + 'px';
+        btn.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+    }
+
+    btnUp.addEventListener('click', (e) => {
+        addRipple(btnUp, e);
+        scrollToSection(currentIndex - 1);
+    });
+
+    btnDown.addEventListener('click', (e) => {
+        addRipple(btnDown, e);
+        scrollToSection(currentIndex + 1);
+    });
+
+    // ── Pip click-to-jump ──
+    pips.forEach((pip, i) => {
+        pip.addEventListener('click', () => scrollToSection(i));
+        pip.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                scrollToSection(i);
+            }
+        });
+    });
+
+    // ── Recalculate progress line on resize ──
+    window.addEventListener('resize', () => updateProgressLine(currentIndex));
+
+    // ── Init state ──
+    setActiveIndex(0);
 }

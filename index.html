@@ -14,6 +14,45 @@
     
     <div class="scroll-progress-bar" id="scroll-progress"></div>
 
+    <!-- STEP NAVIGATION WIDGET -->
+    <nav class="step-nav-widget" id="step-nav-widget" aria-label="Step Navigation">
+        <!-- Progress Indicator -->
+        <div class="step-progress-track" id="step-progress-track" role="tablist">
+            <div class="step-pip active" data-step="0" data-target="hero" role="tab" aria-label="Hero" tabindex="0">
+                <span class="pip-tooltip">Start</span>
+            </div>
+            <div class="step-pip" data-step="1" data-target="step-1-pain" role="tab" aria-label="Step 1" tabindex="0">
+                <span class="pip-tooltip">Step 01</span>
+            </div>
+            <div class="step-pip" data-step="2" data-target="step-2-translation" role="tab" aria-label="Step 2" tabindex="0">
+                <span class="pip-tooltip">Step 02</span>
+            </div>
+            <div class="step-pip" data-step="3" data-target="step-3-analysis" role="tab" aria-label="Step 3" tabindex="0">
+                <span class="pip-tooltip">Step 03</span>
+            </div>
+            <div class="step-pip" data-step="4" data-target="step-4-5-generation" role="tab" aria-label="Step 4" tabindex="0">
+                <span class="pip-tooltip">Step 04-05</span>
+            </div>
+            <div class="step-pip" data-step="5" data-target="special-architecture" role="tab" aria-label="Architecture" tabindex="0">
+                <span class="pip-tooltip">Architecture</span>
+            </div>
+            <div class="step-pip" data-step="6" data-target="step-6-execution" role="tab" aria-label="Step 6" tabindex="0">
+                <span class="pip-tooltip">Step 06</span>
+            </div>
+            <div class="step-pip" data-step="7" data-target="step-7-roi" role="tab" aria-label="Step 7" tabindex="0">
+                <span class="pip-tooltip">Step 07</span>
+            </div>
+        </div>
+
+        <!-- Arrow Buttons -->
+        <button class="step-nav-btn" id="nav-up" aria-label="Previous step" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+        <button class="step-nav-btn" id="nav-down" aria-label="Next step">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+    </nav>
+
     <main class="app-container">
         
         <!-- HERO SECTION -->
