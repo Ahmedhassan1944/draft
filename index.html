@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Process Automation Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+    <main class="app-container">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="fullscreen-section reveal">
+            <div class="glass-card hero-content">
+                <div class="badge">AI Competition 2026</div>
+                <h1 class="gradient-text">Legacy Automation Reimagined</h1>
+                <p class="subtitle">Transforming manual pain into AI-powered velocity.</p>
+                <div class="scroll-indicator">
+                    <span>Scroll to experience</span>
+                    <div class="mouse"><div class="wheel"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 1: THE PAIN -->
+        <section id="step-1-pain" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 01</span>
+                <h2>The Manual Reality</h2>
+                <p>Repetitive, error-prone, and soul-crushing workflows.</p>
+            </div>
+            
+            <div class="pain-container glass-card border-red pulse-red">
+                <div class="excel-mockup">
+                    <div class="mockup-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="title">Employee_Data_Final_v4.xlsx</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="task-list">
+                            <div class="task-item"><span class="icon">❌</span> Open Excel</div>
+                            <div class="task-item"><span class="icon">❌</span> Enter Employee ID <span class="typing-id"></span></div>
+                            <div class="task-item"><span class="icon">⏳</span> Wait for VLOOKUPs to calculate</div>
+                            <div class="task-item"><span class="icon">🖨️</span> Press Print</div>
+                        </div>
+                        <div class="pain-counter">
+                            <h3>Repetitions Remaining</h3>
+                            <div class="counter-number error-text" id="pain-counter-val">400</div>
+                        </div>
+                        <div class="time-wasted-indicator">
+                            Estimated Time: 8 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: THE TRANSLATION -->
+        <section id="step-2-translation" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 02</span>
+                <h2>Natural Language Documentation</h2>
+                <p>Simply describe what you do.</p>
+            </div>
+            
+            <div class="terminal-container glass-card">
+                <div class="mockup-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="title">User Input</span>
+                </div>
+                <div class="terminal-body" id="typing-container">
+                    <!-- Typing effect will go here -->
+                </div>
+                <div class="glow-effect blue"></div>
+            </div>
+        </section>
+
+        <!-- STEP 3: AI ANALYSIS -->
+        <section id="step-3-analysis" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 03</span>
+                <h2>AI Engine Analysis</h2>
+                <p>Translating human actions into structured logic.</p>
+            </div>
+            
+            <div class="pipeline-container">
+                <div class="pipeline-node card-human glass-card">Human Process</div>
+                <div class="pipeline-connector"><div class="animated-stream"></div></div>
+                <div class="pipeline-node card-ai glass-card">AI Analysis &amp; Logic Detection</div>
+                <div class="pipeline-connector"><div class="animated-stream"></div></div>
+                <div class="pipeline-node card-prompt glass-card">Prompt Engineering</div>
+            </div>
+        </section>
+
+        <!-- STEP 4 & 5: PROMPT & GENERATION -->
+        <section id="step-4-5-generation" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 04 & 05</span>
+                <h2>Claude AI Code Generation</h2>
+                <p>From English to executable VBA in seconds.</p>
+            </div>
+
+            <div class="code-editor glass-card border-glow">
+                <div class="mockup-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="title">Generate_Automation.vba</span>
+                </div>
+                <pre><code id="code-generation-container" class="language-vba"></code></pre>
+            </div>
+        </section>
+
+        <!-- SPECIAL SECTION: ARCHITECTURE -->
+        <section id="special-architecture" class="story-section centerpiece reveal">
+            <div class="section-header text-center">
+                <div class="badge neon">AI-Powered Legacy Process Automation</div>
+                <h2>The Architecture of Value</h2>
+            </div>
+
+            <div class="architecture-flow glass-card">
+                <div class="arch-step">Human Knowledge</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-step highlight-purple">GPT / Claude Engine</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-step highlight-blue">Prompt Engineering</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-step highlight-green">VBA Generation</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-step highlight-excel">Excel Automation</div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-step highlight-gold">Business Value & ROI</div>
+            </div>
+        </section>
+
+        <!-- STEP 6: EXECUTION -->
+        <section id="step-6-execution" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 06</span>
+                <h2>High-Speed Execution</h2>
+                <p>Watching the machine take over.</p>
+            </div>
+
+            <div class="execution-dashboard glass-card border-green">
+                <div class="status-header">
+                    <h3>SYSTEM STATUS: <span class="text-green pulse-text">AUTOMATING</span></h3>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-info">
+                        <span>Forms Processed: <span id="forms-processed-count">0</span> / 400</span>
+                        <span id="forms-percentage">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="execution-progress"></div>
+                    </div>
+                </div>
+                <div class="terminal-logs" id="execution-logs">
+                    <!-- Logs injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 7: ROI DASHBOARD -->
+        <section id="step-7-roi" class="story-section reveal">
+            <div class="section-header">
+                <span class="step-label">STEP 07</span>
+                <h2>Business Impact</h2>
+                <p>The true value of digital transformation.</p>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card glass-card">
+                    <div class="kpi-title">Time Required</div>
+                    <div class="kpi-comparison">
+                        <div class="kpi-before">Before: 8 Hours</div>
+                        <div class="kpi-after text-green">After: <span class="count-up" data-target="2">0</span> Minutes</div>
+                    </div>
+                </div>
+                <div class="kpi-card glass-card">
+                    <div class="kpi-title">Manual Actions</div>
+                    <div class="kpi-comparison">
+                        <div class="kpi-before">Before: 400+</div>
+                        <div class="kpi-after text-green">After: <span class="count-up" data-target="3">0</span> Clicks</div>
+                    </div>
+                </div>
+                <div class="kpi-card glass-card">
+                    <div class="kpi-title">Error Rate</div>
+                    <div class="kpi-comparison">
+                        <div class="kpi-before">Before: High (Human Error)</div>
+                        <div class="kpi-after text-green">After: 0.00%</div>
+                    </div>
+                </div>
+                <div class="kpi-card glass-card highlight">
+                    <div class="kpi-title">Productivity Increase</div>
+                    <div class="kpi-value text-gold">+<span class="count-up" data-target="24000">0</span>%</div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="glass-card">
+            <p>AI Enterprise Solutions Demo © 2026</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
